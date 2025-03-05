@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Virtual Watch</title>
+    <style>
+        #watch {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            width: 300px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="watch">Loading time...</div>
+
+    <script>
+        // Function to update the watch with current time in 12-hour format
+        function updateWatch() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                timeZone: 'America/New_York', // Eastern Time
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true, // 12-hour format with AM/PM
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            document.getElementById('watch').innerText = `Smart Watch: ${timeString} EST`;
+        }
+
+        // Update immediately and then every second
+        updateWatch();
+        setInterval(updateWatch, 1000); // Updates every second (faster for offline)
+    </script>
+</body>
+</html>
